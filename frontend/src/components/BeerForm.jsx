@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import api from '../api'
 
-export default function BeerForm(){
+export default function BeerForm({ onCreated }){
   const [form, setForm] = useState({name:'', brand:'', max:10, quantity:0, price:0.0})
   const [saving, setSaving] = useState(false)
 
@@ -14,7 +14,7 @@ export default function BeerForm(){
     e.preventDefault()
     try{
       setSaving(true)
-      await axios.post('/api/v1/beers', {
+      await api.post('/v1/beers', {
         name: form.name,
         brand: form.brand,
         max: parseInt(form.max),
@@ -23,7 +23,7 @@ export default function BeerForm(){
       })
       alert('Cerveja criada')
       setForm({name:'', brand:'', max:10, quantity:0, price:0.0})
-      window.location.reload()
+      if(typeof onCreated === 'function') onCreated()
     }catch(err){
       console.error(err)
       alert(err?.response?.data?.message || 'Erro ao criar')

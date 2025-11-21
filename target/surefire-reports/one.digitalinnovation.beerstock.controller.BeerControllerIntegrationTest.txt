@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: one.digitalinnovation.beerstock.controller.BeerControllerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.024 s - in one.digitalinnovation.beerstock.controller.BeerControllerIntegrationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.142 s - in one.digitalinnovation.beerstock.controller.BeerControllerIntegrationTest
