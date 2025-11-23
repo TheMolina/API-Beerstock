@@ -39,7 +39,6 @@ public class BeerMapper {
         r.setMax(beer.getMax());
         r.setQuantity(beer.getQuantity());
         r.setPrice(beer.getPrice());
-        r.setActive(true);
         return r;
     }
 }

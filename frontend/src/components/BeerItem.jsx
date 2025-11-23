@@ -75,29 +75,34 @@ export default function BeerItem({ beer, onChange }){
   }
 
   return (
-    <li>
-      {!editing ? (
-        <>
-          <strong>{beer.name}</strong> — {beer.brand} — Qtd: {beer.quantity}/{beer.max} — R$ {beer.price}
-          <div style={{display:'inline-block', marginLeft:12}}>
-            <button onClick={()=>changeQuantity(1)} disabled={loading}>+1</button>
-            <button onClick={()=>changeQuantity(-1)} disabled={loading}>-1</button>
-            <button onClick={changePrice} disabled={loading}>Alterar preço</button>
-            <button onClick={startEdit} disabled={loading}>Editar</button>
-            <button onClick={remove} disabled={loading}>Excluir</button>
+    <div className="card">
+      <div className="avatar">{(beer.name||'?').slice(0,2).toUpperCase()}</div>
+      <div className="meta">
+        <div className="name">{beer.name}</div>
+        <div className="brand">{beer.brand}</div>
+        <div className="info">Qtd: {beer.quantity}/{beer.max} • R$ {beer.price}</div>
+      </div>
+      <div className="actions">
+        <button title="+1" onClick={()=>changeQuantity(1)} disabled={loading}>+1</button>
+        <button title="-1" onClick={()=>changeQuantity(-1)} disabled={loading}>-1</button>
+        <button title="Editar preço" onClick={changePrice} disabled={loading}>R$</button>
+        <button title="Editar" onClick={startEdit} disabled={loading}>✎</button>
+        <button title="Excluir" onClick={remove} disabled={loading}>✕</button>
+      </div>
+
+      {editing && (
+        <div style={{width:'100%',marginTop:12}} className="panel">
+          <div className="edit-row">
+            <input name="name" value={form.name} onChange={changeField} />
+            <input name="brand" value={form.brand} onChange={changeField} />
+            <input name="max" type="number" value={form.max} onChange={changeField} />
+            <input name="quantity" type="number" value={form.quantity} onChange={changeField} />
+            <input name="price" type="number" step="0.01" value={form.price} onChange={changeField} />
+            <button onClick={saveEdit} disabled={loading}>Salvar</button>
+            <button onClick={()=>setEditing(false)} disabled={loading}>Cancelar</button>
           </div>
-        </>
-      ) : (
-        <div className="edit-row">
-          <input name="name" value={form.name} onChange={changeField} />
-          <input name="brand" value={form.brand} onChange={changeField} />
-          <input name="max" type="number" value={form.max} onChange={changeField} />
-          <input name="quantity" type="number" value={form.quantity} onChange={changeField} />
-          <input name="price" type="number" step="0.01" value={form.price} onChange={changeField} />
-          <button onClick={saveEdit} disabled={loading}>Salvar</button>
-          <button onClick={()=>setEditing(false)} disabled={loading}>Cancelar</button>
         </div>
       )}
-    </li>
+    </div>
   )
 }

@@ -9,7 +9,6 @@ public class BeerResponseDTO {
     private Integer max;
     private Integer quantity;
     private BigDecimal price;
-    private boolean active = true;
 
     public BeerResponseDTO() {}
 
@@ -25,6 +24,4 @@ public class BeerResponseDTO {
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
 }

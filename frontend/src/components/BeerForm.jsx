@@ -34,7 +34,7 @@ export default function BeerForm({ onCreated }){
 
   return (
     <form onSubmit={submit} className="beer-form">
-      <h2>Cadastrar Cerveja</h2>
+      <h3 style={{marginTop:0}}>Cadastrar Cerveja</h3>
       <div>
         <label>Nome</label>
         <input name="name" value={form.name} onChange={change} required />
@@ -43,19 +43,23 @@ export default function BeerForm({ onCreated }){
         <label>Marca</label>
         <input name="brand" value={form.brand} onChange={change} required />
       </div>
-      <div>
-        <label>Estoque Máx</label>
-        <input name="max" type="number" value={form.max} onChange={change} required />
-      </div>
-      <div>
-        <label>Quantidade</label>
-        <input name="quantity" type="number" value={form.quantity} onChange={change} required />
+      <div style={{display:'flex',gap:8}}>
+        <div style={{flex:1}}>
+          <label>Estoque Máx</label>
+          <input name="max" type="number" value={form.max} onChange={change} required />
+        </div>
+        <div style={{width:120}}>
+          <label>Quantidade</label>
+          <input name="quantity" type="number" value={form.quantity} onChange={change} required />
+        </div>
       </div>
       <div>
         <label>Preço</label>
         <input name="price" type="number" step="0.01" value={form.price} onChange={change} required />
       </div>
-      <button type="submit" disabled={saving}>{saving? 'Salvando...' : 'Salvar'}</button>
+      <div style={{marginTop:12}}>
+        <button type="submit" className="btn" disabled={saving}>{saving? 'Salvando...' : 'Salvar'}</button>
+      </div>
     </form>
   )
 }

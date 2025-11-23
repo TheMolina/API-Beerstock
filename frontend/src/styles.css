@@ -1,14 +1,64 @@
-body{font-family: Arial,Helvetica,sans-serif;padding:20px}
-.container{max-width:900px;margin:0 auto}
-.beer-form div{margin-bottom:8px}
-label{display:block;font-weight:600}
-input{padding:6px;width:100%;box-sizing:border-box}
-button{padding:8px 12px}
+:root{
+	--bg:#0f1720;
+	--panel:#111827;
+	--muted:#9ca3af;
+	--accent:#f59e0b; /* amber */
+	--card:#0b1220;
+	--glass: rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter,Arial,Helvetica,sans-serif;margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#071024);color:#e6eef6}
+.app-wrap{min-height:100vh;padding:28px}
+.container{max-width:1100px;margin:0 auto}
+
+/* Header */
+.site-header{display:flex;align-items:center;gap:16px;padding:18px 24px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px}
+.site-title{font-size:20px;font-weight:700;color:var(--accent)}
+.site-sub{color:var(--muted);font-size:13px}
+.header-actions{margin-left:auto;display:flex;gap:12px;align-items:center}
+.search{width:300px}
+.search input{width:100%;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+.btn{background:var(--accent);color:#0b1220;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+
+/* Hero */
+.hero{display:flex;gap:20px;align-items:center;margin:22px 0}
+.hero-left{flex:1}
+.hero-right{flex:1}
+
+/* Layout */
+.grid{display:grid;grid-template-columns:1fr 380px;gap:20px}
+
+/* Beer form panel */
+.panel{background:linear-gradient(180deg,var(--panel),#0b1220);padding:16px;border-radius:12px}
+.beer-form div{margin-bottom:12px}
+.beer-form label{display:block;font-weight:600;color:var(--muted);margin-bottom:6px}
+.beer-form input{padding:10px;width:100%;box-sizing:border-box;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+.beer-form button{width:100%;padding:10px;border-radius:8px}
+
+/* Beer list */
+.list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:var(--glass);box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
+.card .avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--card),#0b1220);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
+.card .meta{flex:1}
+.card .meta .name{font-weight:700}
+.card .meta .brand{color:var(--muted);font-size:13px}
+.card .meta .info{color:var(--muted);font-size:13px;margin-top:6px}
+.card .actions{display:flex;gap:8px}
+.card .actions button{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:6px 8px;border-radius:8px;cursor:pointer}
 
 .pagination{display:flex;gap:8px;align-items:center;margin-top:12px}
-.pagination button{padding:6px 8px}
+.pagination button{padding:6px 8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+/* small screens */
+@media (max-width:900px){
+	.grid{grid-template-columns:1fr}
+	.search{width:160px}
+}
+
+/* small tweaks for existing classes */
 .edit-row{display:flex;gap:8px;align-items:center;margin-top:6px}
 .edit-row input{width:120px}
-
-.beer-form{flex:1;max-width:540px}
+.beer-form{flex:1}
 

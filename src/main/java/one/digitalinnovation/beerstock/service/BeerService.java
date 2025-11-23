@@ -11,8 +11,10 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class BeerService {
 
     private final BeerRepository repository;
@@ -31,6 +33,7 @@ public class BeerService {
         return BeerMapper.toResponseDTO(saved);
     }
 
+    @Transactional(readOnly = true)
     public List<BeerResponseDTO> listAll() {
         return repository.findAll()
                 .stream()
@@ -38,6 +41,7 @@ public class BeerService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public Optional<BeerResponseDTO> findById(Long id) {
         return repository.findById(id).map(BeerMapper::toResponseDTO);
     }

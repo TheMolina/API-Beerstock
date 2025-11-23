@@ -50,17 +50,17 @@ public class BeerController {
     }
 
     @PatchMapping("/{id}/increment")
-    public ResponseEntity<BeerResponseDTO> increment(@PathVariable Long id, @RequestBody QuantityDTO qty) {
+    public ResponseEntity<BeerResponseDTO> increment(@PathVariable Long id, @Valid @RequestBody QuantityDTO qty) {
         return service.increment(id, qty.getQuantity()).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PatchMapping("/{id}/decrement")
-    public ResponseEntity<BeerResponseDTO> decrement(@PathVariable Long id, @RequestBody QuantityDTO qty) {
+    public ResponseEntity<BeerResponseDTO> decrement(@PathVariable Long id, @Valid @RequestBody QuantityDTO qty) {
         return service.decrement(id, qty.getQuantity()).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PatchMapping("/{id}/price")
-    public ResponseEntity<BeerResponseDTO> updatePrice(@PathVariable Long id, @RequestBody PriceUpdateDTO body) {
+    public ResponseEntity<BeerResponseDTO> updatePrice(@PathVariable Long id, @Valid @RequestBody PriceUpdateDTO body) {
         return ResponseEntity.ok(service.updatePrice(id, body.getPrice()));
     }
 }

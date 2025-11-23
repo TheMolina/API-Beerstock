@@ -6,13 +6,12 @@ export default function BeerList({ search = '' }){
   const [beers, setBeers] = useState([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
-  const pageSize = 5
+  const pageSize = 6
 
   useEffect(()=>{
     fetchBeers()
   }, [])
 
-  // reset to first page when search changes
   useEffect(()=>{
     setPage(1)
   }, [search])
@@ -45,13 +44,16 @@ export default function BeerList({ search = '' }){
 
   return (
     <div>
-      <h2>Lista de Cervejas</h2>
+      <div className="list-header">
+        <h2 style={{margin:0}}>Lista de Cervejas</h2>
+        <div className="site-sub">Total: {total}</div>
+      </div>
       {total === 0 && <p>Nenhuma cerveja cadastrada.</p>}
-      <ul>
+      <div className="cards">
         {pageItems.map(b => (
           <BeerItem key={b.id} beer={b} onChange={fetchBeers} />
         ))}
-      </ul>
+      </div>
 
       <div className="pagination">
         <button onClick={()=>setPage(1)} disabled={page===1}>◀◀</button>
